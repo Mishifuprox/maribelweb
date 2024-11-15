@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AGUA</title>
+    <style>
+        /* Estilos generales para la página */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: url('IMAGENAGUA.PNG') no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            color: #blue;
+	     text-shadow:1px 1px 0px rgba(230,230,230,1);
+        }
+
+        /* Estilo del título principal */
+        h1{
+
+          color: #ff0000;
+            font-size: 40px;
+            margin-top: 80px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+	    text-shadow:1px 1px 0px rgba(230,230,230,1);
+        }
+
+        /* Menú de navegación */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            padding: 15px 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav ul li {
+            display: inline;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+	    text-shadow:1px 1px 0px rgba (230,230,230,1);
+            font-size: 20px;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #F2A900;
+            text-decoration: underline;
+	    text-shadow:1px 1px 0px rgba(230,230,230,1);
+        }
+
+        /* Estilos para el contenido */
+        .contenido {
+            padding: 120px 20px 50px;
+            text-align: center;
+	     text-shadow:1px 1px 0px rgba(230,230,230,1);
+        }
+
+        /* Secciones de contenido (galería, videos, etc.) */
+        .seccion {
+            display: none;
+        }
+
+        .seccion-activa {
+            display: block;
+        }
+
+        .seccion {
+            margin: 20px auto;
+            max-width: 1000px;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .seccion:hover {
+            transform: scale(1.05);
+        }
+
+        /* Estilo de la galería de imágenes */
+        .galeria {
+            margin: 40px auto;
+            text-align: center;
+            text-shadow:1px 1px 0px rgba(230,230,230,1);
+        }
+
+        .imagen-principal {
+            width: 100%;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.4);
+            transition: transform 0.3s ease;
+        }
+
+        .imagen-principal:hover {
+            transform: scale(1.05);
+        }
+
+        .imagenes-secundarias {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .imagenes-secundarias img {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .imagenes-secundarias img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 12px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Contenedor de descripciones */
+        .descripcion-imagenes {
+            margin-top: 30px;
+            color: #ddd;
+            font-size: 16px;
+            font-weight: 600;
+            text-align: center;
+	     text-shadow:1px 1px 0px rgba(230,230,230,1);
+        }
+
+        /* Estilo para los videos */
+        .video-principal {
+            width: 100%;
+            max-width: 800px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .video-principal:hover {
+            transform: scale(1.05);
+        }
+
+        .videos-secundarios {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+    /* Estilo de los audios */
+        .audio-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .audio-secundario {
+            width: 48%;
+            margin-bottom: 20px;
+        }
+
+        .audio-secundario audio {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
+
+        .audio-secundario audio:hover {
+            transform: scale(1.05);
+        }
+
+        .audio-central {
+            width: 48%;
+            margin: 20px auto;
+        }
+
+        /* Estilo de formulario */
+        
+        .form-container {
+            Background-color: #3d4045;
+            Border-radius: 10px;
+            Padding: 20px;
+            Max-width: 500px;
+            Box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        H1 {
+            Color: #ffbc42;
+            Text-align: center;
+        }
+
+        .form-group {
+            Margin-bottom: 15px;
+        }
+
+        Label {
+            Display: block;
+            Margin-bottom: 5px;
+            Color: #ffbc42;
+        }
+
+        Input[type=”text”], textarea, input[type=”email”], select {
+            Width: 100%;
+            Padding: 8px;
+            Border: 1px solid #ffbc42;
+            Border-radius: 5px;
+            Box-sizing: border-box;
+            Background-color: #fff;
+            Color: #333;
+        }
+
+        Button {
+            Background-color: #ffbc42;
+            Color: #2c2f33;
+            Padding: 10px 20px;
+            Border: none;
+            Border-radius: 5px;
+            Cursor: pointer;
+            Width: 100%;
+            Font-size: 16px;
+        }
+
+        Button:hover {
+            Background-color: #f7a916;
+        }
+
+        .message {
+            Text-align: center;
+            Margin-top: 15px;
+            Color: #c7c7c7;
+        }
+
+        /* Botón de regreso al inicio */
+        
+        .boton-inicio {
+            Margin-top: 20px;
+            Background-color: #F2A900;
+            Color: #000;
+            Padding: 10px 20px;
+            Border: none;
+            Border-radius: 8px;
+            Font-size: 18px;
+            Font-weight: bold;
+            Cursor: pointer;
+            Transition: background-color 0.3s ease;
+        }
+
+        .boton-inicio:hover {
+            Background-color: #fff;
+            Color: #000;
+        }
+</style>
+
+<body>
+    
+    <!-- Menú de navegación -->
+    <nav>
+        <ul>
+            <li><a href="#" onclick="mostrarSeccion('descripcion')">INICIO</a></li>
+            <li><a href="#" onclick="mostrarSeccion('galeria')">GALERIA</a></li>
+            <li><a href="#" onclick="mostrarSeccion('video')">VIDEOS</a></li>
+            <li><a href="#" onclick="mostrarSeccion('audio')">AUDIOS</a></li>
+            <li><a href="#" onclick="mostrarSeccion('formulario')">FORMULARIO</a></li>
+        </ul>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="contenido">
+        <!-- Sección de Descripción de Todos Santos -->
+        <div id="descripcion" class="seccion seccion-activa">
+            <h1>EL AGUA</h1>
+
+<style>
+.centrado{
+text-align:center;
+}
+</style>
+            <table>
+                <tr>
+                    <th>EL AGUA </th>
+                </tr>
+                <tr>
+                    <td>
+                        El agua es un elemento esencial para la vida en nuestro planeta, ya que juega un papel fundamental 
+en la supervivencia de los seres vivos, el mantenimiento de los ecosistemas y el desarrollo de las actividades humanas. Comprender
+ qué es el agua, sus características y su importancia en la vida cotidiana es crucial para la promoción de su uso sostenible y la 
+protección de este recurso de valor incalculable.
+El agua es no solo la sustancia más abundante en la Tierra, sino también única en su capacidad de existir en estado líquido, sólido y gaseoso 
+dentro de la atmósfera terrestre. Estos tres estados de la materia permiten al agua desempeñar roles cruciales en el sostén de la vida y en la 
+modulación de los procesos climáticos globales.</td>
+<tr><th>DISTRIBUCION DEL AGUA EN LA TIERRA</th></tr>
+<td>Agua Oceánica: Aproximadamente el 97% del agua del planeta está contenida en los océanos y se caracteriza por ser salada. Esta agua juega un papel vital 
+en el mantenimiento del clima global mediante la regulación de las temperaturas y la absorción de grandes cantidades de dióxido de carbono.
+Agua Dulce: Aunque representa solo el 3% del total del agua en la Tierra, el agua dulce es crucial para la supervivencia humana y de todos los ecosistemas 
+terrestres. La mayor parte de esta agua dulce, alrededor del 68.7%, está almacenada en glaciares y casquetes polares, con solo un 0.3% accesible en ríos, lagos
+ y atmósfera, lo que subraya la precariedad de este recurso vital.</td>
+<tr><th>LOCALIZACION Y ESTADO DEL AGUA DULCE</th></tr>
+<td>Depósitos Acuíferos y Permafrost: Una cantidad significativa de agua dulce se encuentra en depósitos subterráneos y en el permafrost, este último siendo suelo
+ permanentemente congelado que, al descongelarse, puede liberar agua y metano, un gas de efecto invernadero.
+Lagos, Embalses y Ríos: Estos cuerpos de agua son fuentes cruciales de agua dulce accesible para beber, la agricultura y la industria. Los embalses, creados por 
+represas, también contribuyen a la gestión de recursos hídricos al almacenar agua durante períodos de abundancia y liberarla en tiempos de escasez.
+Humedad del Suelo y Vapor Atmosférico: La humedad del suelo es esencial para la agricultura y los ecosistemas naturales, mientras que el vapor atmosférico
+ contribuye al ciclo hidrológico al condensarse y precipitarse como lluvia o nieve.
+
+En este artículo, exploraremos la definición de agua, sus propiedades, estados, el ciclo del agua, cómo se obtiene el agua dulce y su importancia en el mundo en que
+ vivimos. Además veremos como el agua y su ciclo, se están modificando debido al impacto del cambio climático.</td>
+                    <img src="IMAGEN1.PNG" alt="Imagen 2" style="width: 50%; max-width: 300px;">
+
+                </tr>
+            </table>
+        </div>
+
+        <!-- Sección de Galería de imágenes -->
+        <div id="galeria" class="seccion">
+            <h2>EL AGUA HOY EN DIA </h2>
+            <div class="galeria">
+                <!-- Imagen principal arriba -->
+                <img src="IMAGEN2.PNG" alt="Imagen principal" class="imagen-principal">
+            </div>
+            <div class="imagenes-secundarias">
+                <!-- Imágenes secundarias abajo -->
+                <img src="IMAGEN3.PNG" alt="Imagen 2">
+                <img src="IMAGEN4.PNG" alt="Imagen 3">
+                <img src="IMAGEN5.PNG" alt="Imagen 4">
+            </div>
+            <div class="descripcion-imagenes">
+
+ <p><b>QUE ARIAS SIN AGUA </b></p>
+ <p>Si bien, hace 200 años la población del mundo  contaba, no con mas de mil millones de personas, y gracias 
+a la modernización, industrialización, mejoras en la salud, la agricultura. Maravillosamente, la taza de mortalidad disminuyó considerablemente, la esperanza 
+de vida aumentó notoriamente y tan solo fueron 200 años. La situación del agua subterránea es crítica, y se ve agravada por el calentamiento global. Los acuíferos subterráneos suministran más de un tercio del agua
+ utilizada por los seres humanos en todo el mundo; los más problemáticos se encuentran en regiones pobres y densamente pobladas, como en el noroeste de la India,
+ Pakistán y el norte de África.Según cálculos de ONU actualmente somos en torno a 7,5 mil millones de personas. Y aunque la tendencia de este crecimiento intensivo está bajando en los últimos años, para este 2050 está previsto que seamos alrededor de 9 mil millones de habitantes. 
+Tal vez suena esperanzador que seamos tantos en un solo planeta, tal vez no. Sin embargo, esto trae sus consecuencias e implicancias. La demanda del agua potable, 
+la energía, la industria textil y de transporte, solo por nombrar algunos ítems, nos avisa que en un futuro próximo necesitaremos más agua de lo que se puede 
+suministrar, el recurso hídrico no es un bien infinito. El 70% de la superficie de la tierra es agua, pero pese que suena bastante, de ese volumen constante, 
+sobre 1.386.000 metros cúbicos , el 95% es agua de mar no apta para el consumo humano.</p> 
+<p> <b> COMO TENEMOS QUE CUIDAR EL AGUA:</b></p>
+<p>El agua es indispensable para la vida y es un recurso limitado pese a que se encuentra en tres cuartas partes del planeta, porque solo un
+ pequeño porcentaje puede ser usado por los humanos.De acuerdo con la Organización Mundial de la Salud, más de 2000 millones de personas viven en países con escasez de agua, situación que probablemente empeorará 
+en algunas regiones como resultado del cambio climático y el crecimiento de la población.El agua salubre y fácilmente accesible es importante para la salud pública. Según la Organización de las Naciones Unidas, el agua no potable y el saneamiento
+ deficiente son las principales causas de mortalidad infantil. La diarrea infantil, asociada a la escasez de agua, saneamientos inadecuados, aguas contaminadas con agentes patógenos de enfermedades infecciosas y falta de higiene, causan la muerte a 1,5 millones de niños al año. La mayoría de ellos menores de cinco años en países en desarrollo. Por ello, es fundamental trabajar colectivamente y desde cada hogar en el cuidado del agua.
+</p>
+                
+                
+       <p><b></b>COMO ESTA EL AGUA HOY EN DIA:</b></p>
+                    <p>La situación del agua en el mundo es preocupante, ya que es un recurso escaso y limitado, y solo un pequeño porcentaje es potable. A nivel 
+global, se estima que:</p>
+
+            </div>
+        </div>
+
+        <!-- Sección de Galería de videos -->
+        <div id="video" class="seccion">
+            <h2> COMO PODEMOS CUIDAR EL AGUA</h2>
+            <video src="VIDEO.MP4" controls class="video-principal"></video>
+            <div class="videos-secundarios">
+                <div>
+                    <video src="VIDEO1.MP4" controls></video>
+                </div>
+                <div>
+                    <video src="VIDEO2.MP4" controls></video>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Galería de audios -->
+        <div id="audio" class="seccion">
+            <h2> AUDIOS</h2>
+            <!-- Dos audios arriba -->
+            <div class="audio-container">
+                <div class="audio-secundario">
+                    <audio src="AUDIO1.AAC" controls></audio>
+                </div>
+                <div class="audio-secundario">
+                    <audio src="AUDIO2.AAC" controls></audio>
+                </div>
+            </div>
+            <!-- Un audio abajo, centrado -->
+            <div class="audio-central">
+                <audio src="AUDIO2.AAC" controls></audio>
+            </div>
+        </div>
+
+        <!-- Sección de Formulario -->
+        <div id="formulario" class="seccion">
+            <h2>FORMULARIO</h2>
+            <!-- Aquí se puede colocar el formulario si es necesario -->
+            <div class=”form-container”>
+                <h1>DEJA TUS DATOS Y QUE OPINAS</h1>
+                <p>ES UNA REFLEXION DEL AGUA </p>
+            
+                <form action=”submit_candle.php” method=”post”>
+                    <div class=”form-group”>
+                        <label for=”nombre”>NOMBRE</label>
+                        <input type=”text” id=”nombre” name=”nombre” required minlength="3" maxlength="10">
+                    </div>
+            
+                    <div class=”form-group”>
+                        <label for=”apellido”>APELLIDO</label>
+                        <input type=”text” id=”nombre” name=”nombre” required minlength="3" maxlength="21">
+                    </div>
+ 			<div class=”form-group”>
+                        <label for=”mensaje”>DEPARTAMENTO</label>
+                        <input type=”text” id=”nombre” name=”nombre” required minlength="3" maxlength="10">
+                    </div>
+ <div class=”form-group”>
+                        <label for=”mensaje”>QUE OPINAS DE LA ESCASES DE LA AGUA </label>
+                        <textarea id=”mensaje” name=”mensaje” rows=”3” required></textarea>
+                    </div>
+            
+                    <div class=”form-group”>
+                        <label for=”color”>COMO CUIDAS EL AGUA</label>
+                        <select id=”color” name=”color”>
+                            <option value=”RECICLO”>RESICLO EL AGUA(VALDE.BAÑADORES</option>
+                            <option value=”RECICLO”>LAVO EL AUTO CON EL AGUA RESICLADO</option>
+			     <option value=”RESICLO”>LO PONGO PARA REGAR EL JARDIN</option>
+                        </select>
+                    </div>
+            
+                    <div class=”form-group”>
+                        <label for=”NO RESICLO”>NO ME SIRVE LA AGUA SUCIA</label>
+                        <select id=”simbolo” name=”simbolo”>
+                            <option value=”NO RESICLO”>YO PAGO LA FACTURA QUE GASTO</option>
+                            <option value=”NO RESICLO”>SIEMPRE ME OLVIDO</option>
+                          
+                        </select>
+                    </div>
+            
+                    <div class=”form-group”>
+                        <label for=”correo”>Correo Electrónico (opcional)</label>
+                        <input type=”email” id=”correo” name=”correo”>
+                    </div>
+            
+                    <button type=”submit”>AHORA YA PUEDS ENVIAR</button>
+                </form>
+            
+                <div class=”message”>
+                    <p>GRACIAS ,ESPERO QUE TODOS LOS QUE VEAN SI RESICLE EN AGUA </p>
+                </div>
+                <button class="boton-INICIO" onclick=mostrarSeccion(descripcion)>INICIO</button>
+
+
+
+        </div>
+    </div>
+
+    <script>
+        // Función para mostrar solo la sección activa
+        function mostrarSeccion(id) {
+            const secciones = document.querySelectorAll('.seccion');
+            secciones.forEach(function(seccion) {
+                seccion.classList.remove('seccion-activa');
+            });
+            document.getElementById(id).classList.add('seccion-activa');
+        }
+    </script>
+</body>
+</html>
